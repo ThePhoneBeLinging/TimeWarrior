@@ -65,6 +65,8 @@ Texture2D DrawAbleObject::getTexture ()
 void DrawAbleObject::setTexture (const Texture2D &texture)
 {
     DrawAbleObject::texture = texture;
+    this->texture.height = this->height;
+    this->texture.width = this->width;
 }
 
 
