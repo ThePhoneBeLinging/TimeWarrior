@@ -38,9 +38,9 @@ void GameManager::handleMovement ()
         if (IsKeyDown(KEY_A)) movementX--;
         if (IsKeyDown(KEY_D)) movementX++;
 
-
-        //TODO insert collision checks
-        if (true) player->setX(player->getX() + movementX);
-        if (true) player->setY(player->getY() + movementY);
+        int totalMovementX = player->getX() + movementX;
+        int totalMovementY = player->getY() + movementY;
+        if (totalMovementX > 0 && totalMovementX + player->getWidth() < screenWidth) player->setX(totalMovementX);
+        if (totalMovementY > 0 && totalMovementY + player->getHeight() < screenHeight) player->setY(totalMovementY);
     }
 }
