@@ -14,11 +14,13 @@ public:
     GameManager(int screenWidth, int screenHeight, int fps);
     void gameLoop();
     Player* getPlayer();
+    int getRunTime () const;
 private:
     int screenWidth;
     int screenHeight;
     Player* player = nullptr;
     void handleMovement();
+    int runTime;
 };
 
 

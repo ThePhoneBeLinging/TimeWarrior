@@ -12,19 +12,20 @@ GameManager::GameManager (int screenWidth, int screenHeight, int fps)
     this->player = new Player(0,0,50,50);
     this->screenWidth = screenWidth;
     this->screenHeight = screenHeight;
+    this->runTime = 0;
 }
 
 void GameManager::gameLoop()
 {
-    int runTime = 0;
     while (!WindowShouldClose())
     {
         handleMovement();
         BeginDrawing();
         ClearBackground(BLACK);
         DrawTexture(player->getTexture(),player->getX(),player->getY(),WHITE);
+        DrawText(TextFormat("%d",runTime),0,0,15,WHITE);
         EndDrawing();
-        runTime++;
+        this->runTime++;
     }
 }
 
@@ -51,3 +52,9 @@ Player *GameManager::getPlayer ()
 {
     return this->player;
 }
+
+int GameManager::getRunTime () const
+{
+    return this->runTime;
+}
+
