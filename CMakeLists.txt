@@ -29,7 +29,6 @@ endif ()
 #new edit;
 add_executable(${PROJECT_NAME}
         Main.cpp
-        Main.h
 )
 #set(raylib_VERBOSE 1)
 target_link_libraries(${PROJECT_NAME} raylib)
