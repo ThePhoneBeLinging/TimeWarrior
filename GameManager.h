@@ -17,7 +17,7 @@ private:
     int screenWidth;
     int screenHeight;
     Player* player = nullptr;
-    void handleKeyBoardInput();
+    void handleMovement();
 };
 
 

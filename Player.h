@@ -6,6 +6,8 @@
 #define TIMEWARRIOR_PLAYER_H
 
 
+#include "raylib.h"
+
 class Player
 {
 public:

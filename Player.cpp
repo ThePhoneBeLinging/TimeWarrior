@@ -56,3 +56,4 @@ int Player::getMovementSpeed ()
 {
     return this->movementSpeed;
 }
+

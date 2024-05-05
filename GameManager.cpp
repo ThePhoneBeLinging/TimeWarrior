@@ -18,19 +18,16 @@ void GameManager::gameLoop()
 {
     while (!WindowShouldClose())
     {
-        handleKeyBoardInput();
+        handleMovement();
         BeginDrawing();
         ClearBackground(BLACK);
         DrawRectangle(player->getX(),player->getY(),player->getWidth(),player->getHeight(),RED);
-        DrawText("Hello World",250,250,15,WHITE);
         EndDrawing();
     }
-
 }
 
-void GameManager::handleKeyBoardInput ()
+void GameManager::handleMovement ()
 {
-
     for (int i = 0; i < player->getMovementSpeed(); i++)
     {
         int movementX = 0;
