@@ -7,11 +7,11 @@
 
 GameManager::GameManager (int screenWidth, int screenHeight, int fps)
 {
+    InitWindow(screenWidth,screenHeight,"Time - Warrior");
+    SetTargetFPS(fps);
     this->player = new Player(0,0,50,50);
     this->screenWidth = screenWidth;
     this->screenHeight = screenHeight;
-    InitWindow(screenWidth,screenHeight,"Time - Warrior");
-    SetTargetFPS(fps);
 }
 
 void GameManager::gameLoop()
@@ -21,7 +21,7 @@ void GameManager::gameLoop()
         handleMovement();
         BeginDrawing();
         ClearBackground(BLACK);
-        DrawRectangle(player->getX(),player->getY(),player->getWidth(),player->getHeight(),RED);
+        DrawTexture(player->getTexture(),player->getX(),player->getY(),WHITE);
         EndDrawing();
     }
 }
