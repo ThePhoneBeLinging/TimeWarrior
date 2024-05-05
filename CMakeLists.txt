@@ -31,6 +31,8 @@ add_executable(${PROJECT_NAME}
         Main.cpp
         GameManager.cpp
         GameManager.h
+        Player.cpp
+        Player.h
 )
 #set(raylib_VERBOSE 1)
 target_link_libraries(${PROJECT_NAME} raylib)
