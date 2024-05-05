@@ -9,10 +9,9 @@ int main()
 {
     int screenHeight = 800;
     int screenWidth = 1200;
-    int targetFPS = 60;
+    int targetFPS = 144;
     GameManager gameManager = GameManager(screenWidth,screenHeight,targetFPS);
     gameManager.gameLoop();
-    std::cout << "Hello world";
     CloseWindow();
     return 0;
 }
