@@ -16,6 +16,7 @@ GameManager::GameManager (int screenWidth, int screenHeight, int fps)
 
 void GameManager::gameLoop()
 {
+    int runTime = 0;
     while (!WindowShouldClose())
     {
         handleMovement();
@@ -23,6 +24,7 @@ void GameManager::gameLoop()
         ClearBackground(BLACK);
         DrawTexture(player->getTexture(),player->getX(),player->getY(),WHITE);
         EndDrawing();
+        runTime++;
     }
 }
 
@@ -43,4 +45,9 @@ void GameManager::handleMovement ()
         if (totalMovementX > 0 && totalMovementX + player->getWidth() < screenWidth) player->setX(totalMovementX);
         if (totalMovementY > 0 && totalMovementY + player->getHeight() < screenHeight) player->setY(totalMovementY);
     }
+}
+
+Player *GameManager::getPlayer ()
+{
+    return this->player;
 }

@@ -13,6 +13,7 @@ class GameManager
 public:
     GameManager(int screenWidth, int screenHeight, int fps);
     void gameLoop();
+    Player* getPlayer();
 private:
     int screenWidth;
     int screenHeight;
