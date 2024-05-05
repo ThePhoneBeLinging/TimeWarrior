@@ -12,7 +12,6 @@ GameManager::GameManager (int screenWidth, int screenHeight, int fps)
     this->screenHeight = screenHeight;
     InitWindow(screenWidth,screenHeight,"Time - Warrior");
     SetTargetFPS(fps);
-
 }
 
 void GameManager::gameLoop()
