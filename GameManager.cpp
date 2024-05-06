@@ -66,7 +66,7 @@ void GameManager::resetPlayer ()
     //TODO Set oldPlayer and new player positions to entrance of room
     this->oldPlayer->setX(0);
     this->oldPlayer->setY(0);
-    this->player = new Player(0,0,50,50);
+    this->player = new Player(0,0,this->oldPlayer->getWidth(),this->oldPlayer->getHeight());
 }
 
 void GameManager::drawAndUpdatePlayers ()
