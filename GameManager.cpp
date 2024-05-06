@@ -41,16 +41,7 @@ void GameManager::gameLoop()
         DrawText(TextFormat("%d",runTime),0,0,15,WHITE);
         EndDrawing();
         this->runTime++;
-        if (IsKeyPressed(KEY_ENTER))
-        {
-            delete this->oldPlayer;
-            this->oldPlayer = this->player;
-            this->oldPlayer->setHead(0);
-            //TODO Set oldPlayer and new player positions to entrance of room
-            this->oldPlayer->setX(0);
-            this->oldPlayer->setY(0);
-            this->player = new Player(0,0,50,50);
-        }
+        if (IsKeyPressed(KEY_ENTER)) resetPlayer();
     }
 }
 
@@ -81,5 +72,16 @@ Player *GameManager::getPlayer ()
 int GameManager::getRunTime () const
 {
     return this->runTime;
+}
+
+void GameManager::resetPlayer ()
+{
+    delete this->oldPlayer;
+    this->oldPlayer = this->player;
+    this->oldPlayer->setHead(0);
+    //TODO Set oldPlayer and new player positions to entrance of room
+    this->oldPlayer->setX(0);
+    this->oldPlayer->setY(0);
+    this->player = new Player(0,0,50,50);
 }
 

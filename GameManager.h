@@ -15,6 +15,7 @@ public:
     void gameLoop();
     Player* getPlayer();
     int getRunTime () const;
+    void resetPlayer();
 private:
     int screenWidth;
     int screenHeight;
