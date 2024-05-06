@@ -18,7 +18,6 @@ void Player::savePosition (int x, int y)
     this->xPositions[this->head] = x;
     this->yPositions[this->head] = y;
     this->head++;
-    if (this->head == 10000) this->head = 0;
 }
 
 int Player::getHead ()

@@ -88,6 +88,6 @@ void GameManager::drawAndUpdatePlayers ()
         this->oldPlayer->setHead(this->oldPlayer->getHead() + 1);
     }
     DrawTexture(player->getTexture(),player->getX(),player->getY(),WHITE);
-
+    if (this->player->getHead() == 10000) resetPlayer();
 }
 
