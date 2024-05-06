@@ -36,10 +36,10 @@ void GameManager::handleMovement ()
         int movementX = 0;
         int movementY = 0;
 
-        if (IsKeyDown(KEY_W)) movementY--;
-        if (IsKeyDown(KEY_S)) movementY++;
-        if (IsKeyDown(KEY_A)) movementX--;
-        if (IsKeyDown(KEY_D)) movementX++;
+        if (IsKeyDown(KEY_W) || IsKeyDown(KEY_UP)) movementY--;
+        if (IsKeyDown(KEY_S) || IsKeyDown(KEY_DOWN)) movementY++;
+        if (IsKeyDown(KEY_A) || IsKeyDown(KEY_LEFT)) movementX--;
+        if (IsKeyDown(KEY_D) || IsKeyDown(KEY_RIGHT)) movementX++;
 
         int totalMovementX = player->getX() + movementX;
         int totalMovementY = player->getY() + movementY;
