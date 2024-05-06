@@ -15,9 +15,16 @@ public:
     Player(int x, int y, int width, int height);
 
     int getMovementSpeed();
-
+    void savePosition(int x, int y);
+    int getHead();
+    int getXPositionAtIndex(int index);
+    int getYPositionAtIndex(int index);
+    void setHead(int head);
 private:
     int movementSpeed = 2;
+    int xPositions[10000] = {0};
+    int yPositions[10000] = {0};
+    int head;
 };
 
 

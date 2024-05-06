@@ -19,6 +19,7 @@ private:
     int screenWidth;
     int screenHeight;
     Player* player = nullptr;
+    Player* oldPlayer = nullptr;
     void handleMovement();
     int runTime;
 };

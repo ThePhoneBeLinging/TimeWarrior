@@ -6,9 +6,38 @@
 
 Player::Player (int x, int y, int width, int height):DrawAbleObject(x,y,width,height, LoadTexture("../Resources/zelda.png"))
 {
+    this->head = 0;
 }
 int Player::getMovementSpeed ()
 {
     return this->movementSpeed;
+}
+
+void Player::savePosition (int x, int y)
+{
+    this->xPositions[this->head] = x;
+    this->yPositions[this->head] = y;
+    this->head++;
+    if (this->head == 10000) this->head = 0;
+}
+
+int Player::getHead ()
+{
+    return this->head;
+}
+
+int Player::getXPositionAtIndex (int index)
+{
+    return this->xPositions[index];
+}
+
+int Player::getYPositionAtIndex (int index)
+{
+    return this->yPositions[index];
+}
+
+void Player::setHead (int head)
+{
+    this->head = head;
 }
 
