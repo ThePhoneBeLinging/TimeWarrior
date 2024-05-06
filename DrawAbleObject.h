@@ -28,6 +28,7 @@ public:
 
     void setHeight (int height);
 
+    bool getIfColliding(DrawAbleObject* otherObject);
 
 private:
     int x;

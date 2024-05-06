@@ -69,5 +69,10 @@ void DrawAbleObject::setTexture (const Texture2D &texture)
     this->texture.width = this->width;
 }
 
+bool DrawAbleObject::getIfColliding (DrawAbleObject* otherObject)
+{
+    return (this->x < otherObject->x && otherObject->x < this->x + this->width) && (this->y < otherObject->y && otherObject->y < this->y + this->height);
+}
+
 
 
