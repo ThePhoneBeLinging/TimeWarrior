@@ -71,6 +71,7 @@ void GameManager::resetPlayer ()
 
 void GameManager::drawAndUpdatePlayers ()
 {
+    //TODO Add collision detection for players
     player->savePosition(player->getX(),player->getY());
     handleMovement();
     if (this->oldPlayer != nullptr)
