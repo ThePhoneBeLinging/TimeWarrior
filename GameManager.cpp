@@ -19,29 +19,13 @@ void GameManager::gameLoop()
 {
     while (!WindowShouldClose())
     {
-        player->savePosition(player->getX(),player->getY());
-        //std::cout << player->getX() << "," << player->getY() << std::endl;
-        handleMovement();
+        drawAndUpdatePlayers();
         BeginDrawing();
         ClearBackground(BLACK);
-        DrawTexture(player->getTexture(),player->getX(),player->getY(),WHITE);
-        if (this->oldPlayer != nullptr)
-        {
-            int head = this->oldPlayer->getHead();
-            int xPosition = this->oldPlayer->getXPositionAtIndex(head);
-            int yPosition = this->oldPlayer->getYPositionAtIndex(head);
-            if (xPosition != 0 && yPosition != 0)
-            {
-                this->oldPlayer->setX(xPosition);
-                this->oldPlayer->setY(yPosition);
-            }
-            DrawTexture(this->oldPlayer->getTexture(),this->oldPlayer->getX(),this->oldPlayer->getY(),WHITE);
-            this->oldPlayer->setHead(this->oldPlayer->getHead() + 1);
-        }
         DrawText(TextFormat("%d",runTime),0,0,15,WHITE);
-        EndDrawing();
-        this->runTime++;
         if (IsKeyPressed(KEY_ENTER)) resetPlayer();
+        this->runTime++;
+        EndDrawing();
     }
 }
 
@@ -83,5 +67,26 @@ void GameManager::resetPlayer ()
     this->oldPlayer->setX(0);
     this->oldPlayer->setY(0);
     this->player = new Player(0,0,50,50);
+}
+
+void GameManager::drawAndUpdatePlayers ()
+{
+    player->savePosition(player->getX(),player->getY());
+    handleMovement();
+    if (this->oldPlayer != nullptr)
+    {
+        int head = this->oldPlayer->getHead();
+        int xPosition = this->oldPlayer->getXPositionAtIndex(head);
+        int yPosition = this->oldPlayer->getYPositionAtIndex(head);
+        if (xPosition != 0 && yPosition != 0)
+        {
+            this->oldPlayer->setX(xPosition);
+            this->oldPlayer->setY(yPosition);
+        }
+        DrawTexture(this->oldPlayer->getTexture(),this->oldPlayer->getX(),this->oldPlayer->getY(),WHITE);
+        this->oldPlayer->setHead(this->oldPlayer->getHead() + 1);
+    }
+    DrawTexture(player->getTexture(),player->getX(),player->getY(),WHITE);
+
 }
 

@@ -16,6 +16,7 @@ public:
     Player* getPlayer();
     int getRunTime () const;
     void resetPlayer();
+    void drawAndUpdatePlayers();
 private:
     int screenWidth;
     int screenHeight;
