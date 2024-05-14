@@ -19,6 +19,7 @@ public:
     int getRunTime () const;
     void resetPlayer();
     void drawAndUpdatePlayers();
+    void drawDrawAbleObjects();
 private:
     int screenWidth;
     int screenHeight;

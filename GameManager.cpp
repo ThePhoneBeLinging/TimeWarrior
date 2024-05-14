@@ -24,6 +24,7 @@ void GameManager::gameLoop()
         drawAndUpdatePlayers();
         BeginDrawing();
         ClearBackground(BLACK);
+        drawDrawAbleObjects();
         DrawText(TextFormat("%d",runTime),0,0,15,WHITE);
         if (IsKeyPressed(KEY_ENTER)) resetPlayer();
         this->runTime++;
@@ -91,5 +92,13 @@ void GameManager::drawAndUpdatePlayers ()
     }
     DrawTexture(player->getTexture(),player->getX(),player->getY(),WHITE);
     if (this->player->getHead() == 10000) resetPlayer();
+}
+
+void GameManager::drawDrawAbleObjects ()
+{
+    for (DrawAbleObject drawAbleObject : drawAbleObjects)
+    {
+        DrawTexture(drawAbleObject.getTexture(),drawAbleObject.getX(),drawAbleObject.getY(),WHITE);
+    }
 }
 
