@@ -68,7 +68,18 @@ void DrawAbleObject::setTexture (const Texture2D &texture)
 
 bool DrawAbleObject::getIfColliding (DrawAbleObject* otherObject)
 {
-    return (this->x < otherObject->x && otherObject->x < this->x + this->width) && (this->y < otherObject->y && otherObject->y < this->y + this->height);
+    bool isColliding = false;
+    if (this->x - otherObject->width < otherObject->x &&
+        this->x + this->width > otherObject->x)
+    {
+        if (this->y - otherObject->y < otherObject->y &&
+            this->y + this->height > otherObject->y)
+        {
+            return true;
+        }
+    }
+    return false;
+    return isColliding;
 }
 
 
