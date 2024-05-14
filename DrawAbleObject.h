@@ -11,7 +11,7 @@
 class DrawAbleObject
 {
 public:
-    DrawAbleObject(int x, int y, int width, int height);
+    DrawAbleObject(int x, int y, int width, int height, bool collidable);
     int getX () const;
 
     void setX (int x);
@@ -38,6 +38,14 @@ private:
     int y;
     int width;
     int height;
+    bool collidable;
+public:
+    void setCollidable (bool collidable);
+
+public:
+    bool isCollidable () const;
+
+private:
     Texture2D texture{};
 
 };

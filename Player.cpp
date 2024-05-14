@@ -4,7 +4,7 @@
 
 #include "Player.h"
 
-Player::Player (int x, int y, int width, int height):DrawAbleObject(x,y,width,height)
+Player::Player (int x, int y, int width, int height):DrawAbleObject(x,y,width,height,false)
 {
     this->head = 0;
     this->setTexture(LoadTexture("../Resources/zelda.png"));

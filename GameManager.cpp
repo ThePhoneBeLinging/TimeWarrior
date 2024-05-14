@@ -14,7 +14,7 @@ GameManager::GameManager (int screenWidth, int screenHeight, int fps)
     this->screenWidth = screenWidth;
     this->screenHeight = screenHeight;
     this->runTime = 0;
-    this->drawAbleObjects.push_back(PressurePlate(250,250,250,250));
+    this->drawAbleObjects.push_back(DrawAbleObject(250,250,250,250,true));
 }
 
 void GameManager::gameLoop()
@@ -46,8 +46,14 @@ void GameManager::handleMovement ()
 
         int totalMovementX = player->getX() + movementX;
         int totalMovementY = player->getY() + movementY;
-        if (totalMovementX > 0 && totalMovementX + player->getWidth() < screenWidth) player->setX(totalMovementX);
-        if (totalMovementY > 0 && totalMovementY + player->getHeight() < screenHeight) player->setY(totalMovementY);
+        if (totalMovementX > 0 && totalMovementX + player->getWidth() < screenWidth)
+        {
+            player->setX(totalMovementX);
+        }
+        if (totalMovementY > 0 && totalMovementY + player->getHeight() < screenHeight)
+        {
+            player->setY(totalMovementY);
+        }
     }
 }
 

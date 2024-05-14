@@ -5,7 +5,7 @@
 #include "PressurePlate.h"
 
 PressurePlate::PressurePlate (int x, int y, int width, int height):
-        DrawAbleObject(x,y,width,height)
+        DrawAbleObject(x,y,width,height,false)
 {
     this->idleTexture = LoadTexture("../Resources/wood.png");
     this->activatedTexture = LoadTexture("../Resources/zelda.png");

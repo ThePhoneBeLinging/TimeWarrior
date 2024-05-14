@@ -4,12 +4,13 @@
 
 #include "DrawAbleObject.h"
 
-DrawAbleObject::DrawAbleObject (int x, int y, int width, int height)
+DrawAbleObject::DrawAbleObject (int x, int y, int width, int height,bool collidable)
 {
     this->x = x;
     this->y = y;
     this->width = width;
     this->height = height;
+    this->collidable = collidable;
 }
 
 int DrawAbleObject::getX () const
@@ -80,6 +81,16 @@ bool DrawAbleObject::getIfColliding (DrawAbleObject* otherObject)
     }
     return false;
     return isColliding;
+}
+
+bool DrawAbleObject::isCollidable () const
+{
+    return collidable;
+}
+
+void DrawAbleObject::setCollidable (bool collidable)
+{
+    DrawAbleObject::collidable = collidable;
 }
 
 
