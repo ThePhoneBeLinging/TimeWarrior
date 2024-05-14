@@ -84,8 +84,7 @@ void GameManager::drawAndUpdatePlayers ()
         int yPosition = this->oldPlayer->getYPositionAtIndex(head);
         if (xPosition != 0 && yPosition != 0)
         {
-            this->oldPlayer->setX(xPosition);
-            this->oldPlayer->setY(yPosition);
+            movePlayerToPos(this->oldPlayer,xPosition,yPosition);
         }
         DrawTexture(this->oldPlayer->getTexture(),this->oldPlayer->getX(),this->oldPlayer->getY(),WHITE);
         this->oldPlayer->setHead(this->oldPlayer->getHead() + 1);
@@ -114,18 +113,19 @@ void GameManager::movePlayerToPos (Player *player, int newX, int newY)
         if (player->getIfColliding(&drawAbleObject))
         {
             player->setX(oldX);
+            if (player->getIfColliding(&drawAbleObject))
+            {
+                player->setX(newX);
+                player->setY(oldY);
+            }
+            else if (player->getIfColliding(&drawAbleObject))
+            {
+                player->setX(oldX);
+                player->setY(oldY);
+            }
+            return;
         }
-        else if (player->getIfColliding(&drawAbleObject))
-        {
-            player->setX(newX);
-            player->setY(oldY);
-        }
-        else if (player->getIfColliding(&drawAbleObject))
-        {
-            player->setX(oldX);
-            player->setY(oldY);
-        }
-        return;
+
     }
     if (newX > 0 && newX + player->getWidth() < screenWidth)
     {
