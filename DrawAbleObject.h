@@ -29,6 +29,9 @@ public:
     void setHeight (int height);
 
     bool getIfColliding(DrawAbleObject* otherObject);
+    Texture2D getTexture ();
+
+    void setTexture (const Texture2D &texture);
 
 private:
     int x;
@@ -36,10 +39,7 @@ private:
     int width;
     int height;
     Texture2D texture;
-public:
-    Texture2D getTexture ();
 
-    void setTexture (const Texture2D &texture);
 };
 
 
