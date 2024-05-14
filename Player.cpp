@@ -4,9 +4,10 @@
 
 #include "Player.h"
 
-Player::Player (int x, int y, int width, int height):DrawAbleObject(x,y,width,height, LoadTexture("../Resources/zelda.png"))
+Player::Player (int x, int y, int width, int height):DrawAbleObject(x,y,width,height)
 {
     this->head = 0;
+    this->setTexture(LoadTexture("../Resources/zelda.png"));
 }
 int Player::getMovementSpeed ()
 {

@@ -4,15 +4,12 @@
 
 #include "DrawAbleObject.h"
 
-DrawAbleObject::DrawAbleObject (int x, int y, int width, int height, Texture2D texture)
+DrawAbleObject::DrawAbleObject (int x, int y, int width, int height)
 {
     this->x = x;
     this->y = y;
     this->width = width;
     this->height = height;
-    this->texture = texture;
-    this->texture.height = height;
-    this->texture.width = width;
 }
 
 int DrawAbleObject::getX () const

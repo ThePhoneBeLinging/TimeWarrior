@@ -11,7 +11,7 @@
 class DrawAbleObject
 {
 public:
-    DrawAbleObject(int x, int y, int width, int height, Texture2D texture);
+    DrawAbleObject(int x, int y, int width, int height);
     int getX () const;
 
     void setX (int x);
@@ -38,7 +38,7 @@ private:
     int y;
     int width;
     int height;
-    Texture2D texture;
+    Texture2D texture{};
 
 };
 
