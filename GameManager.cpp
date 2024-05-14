@@ -4,6 +4,7 @@
 
 #include <iostream>
 #include "GameManager.h"
+#include "PressurePlate.h"
 
 GameManager::GameManager (int screenWidth, int screenHeight, int fps)
 {
@@ -13,6 +14,7 @@ GameManager::GameManager (int screenWidth, int screenHeight, int fps)
     this->screenWidth = screenWidth;
     this->screenHeight = screenHeight;
     this->runTime = 0;
+    this->drawAbleObjects.push_back(PressurePlate(250,250,250,250));
 }
 
 void GameManager::gameLoop()

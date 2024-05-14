@@ -4,6 +4,8 @@
 
 #ifndef TIMEWARRIOR_GAMEMANAGER_H
 #define TIMEWARRIOR_GAMEMANAGER_H
+
+#include <list>
 #include "raylib.h"
 #include "Player.h"
 
@@ -24,6 +26,7 @@ private:
     Player* oldPlayer = nullptr;
     void handleMovement();
     int runTime;
+    std::list<DrawAbleObject> drawAbleObjects;
 };
 
 
