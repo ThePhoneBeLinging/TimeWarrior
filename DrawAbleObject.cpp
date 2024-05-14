@@ -73,7 +73,7 @@ bool DrawAbleObject::getIfColliding (DrawAbleObject* otherObject)
     if (this->x - otherObject->width < otherObject->x &&
         this->x + this->width > otherObject->x)
     {
-        if (this->y - otherObject->y < otherObject->y &&
+        if (this->y - otherObject->height < otherObject->y &&
             this->y + this->height > otherObject->y)
         {
             return true;

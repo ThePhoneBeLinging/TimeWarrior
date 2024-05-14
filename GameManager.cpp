@@ -14,7 +14,9 @@ GameManager::GameManager (int screenWidth, int screenHeight, int fps)
     this->screenWidth = screenWidth;
     this->screenHeight = screenHeight;
     this->runTime = 0;
-    this->drawAbleObjects.push_back(DrawAbleObject(250,250,250,250,true));
+    DrawAbleObject drawAbleObject = DrawAbleObject(250,250,50,50,true);
+    drawAbleObject.setTexture(LoadTexture("../Resources/wood.png"));
+    this->drawAbleObjects.push_back(drawAbleObject);
 }
 
 void GameManager::gameLoop()
@@ -44,16 +46,9 @@ void GameManager::handleMovement ()
         if (IsKeyDown(KEY_A) || IsKeyDown(KEY_LEFT)) movementX--;
         if (IsKeyDown(KEY_D) || IsKeyDown(KEY_RIGHT)) movementX++;
 
-        int totalMovementX = player->getX() + movementX;
-        int totalMovementY = player->getY() + movementY;
-        if (totalMovementX > 0 && totalMovementX + player->getWidth() < screenWidth)
-        {
-            player->setX(totalMovementX);
-        }
-        if (totalMovementY > 0 && totalMovementY + player->getHeight() < screenHeight)
-        {
-            player->setY(totalMovementY);
-        }
+        int newX = player->getX() + movementX;
+        int newY = player->getY() + movementY;
+        movePlayerToPos(player,newX,newY);
     }
 }
 
@@ -80,7 +75,6 @@ void GameManager::resetPlayer ()
 
 void GameManager::drawAndUpdatePlayers ()
 {
-    //TODO Add collision detection for players
     player->savePosition(player->getX(),player->getY());
     handleMovement();
     if (this->oldPlayer != nullptr)
@@ -105,6 +99,41 @@ void GameManager::drawDrawAbleObjects ()
     for (DrawAbleObject drawAbleObject : drawAbleObjects)
     {
         DrawTexture(drawAbleObject.getTexture(),drawAbleObject.getX(),drawAbleObject.getY(),WHITE);
+    }
+}
+
+void GameManager::movePlayerToPos (Player *player, int newX, int newY)
+{
+    int oldX = player->getX();
+    int oldY = player->getY();
+    player->setX(newX);
+    player->setY(newY);
+    for (DrawAbleObject drawAbleObject : drawAbleObjects)
+    {
+        if (!drawAbleObject.isCollidable()) continue;
+        if (player->getIfColliding(&drawAbleObject))
+        {
+            player->setX(oldX);
+        }
+        else if (player->getIfColliding(&drawAbleObject))
+        {
+            player->setX(newX);
+            player->setY(oldY);
+        }
+        else if (player->getIfColliding(&drawAbleObject))
+        {
+            player->setX(oldX);
+            player->setY(oldY);
+        }
+        return;
+    }
+    if (newX > 0 && newX + player->getWidth() < screenWidth)
+    {
+        player->setX(newX);
+    }
+    if (newY > 0 && newY + player->getHeight() < screenHeight)
+    {
+        player->setY(newY);
     }
 }
 

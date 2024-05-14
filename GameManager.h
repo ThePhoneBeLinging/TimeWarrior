@@ -20,6 +20,7 @@ public:
     void resetPlayer();
     void drawAndUpdatePlayers();
     void drawDrawAbleObjects();
+    void movePlayerToPos(Player* player, int x, int y);
 private:
     int screenWidth;
     int screenHeight;
