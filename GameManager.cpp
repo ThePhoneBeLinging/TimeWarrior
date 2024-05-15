@@ -103,6 +103,7 @@ void GameManager::drawDrawAbleObjects ()
 
 void GameManager::movePlayerToPos (Player *player, int newX, int newY)
 {
+
     int oldX = player->getX();
     int oldY = player->getY();
     player->setX(newX);
@@ -117,23 +118,21 @@ void GameManager::movePlayerToPos (Player *player, int newX, int newY)
             {
                 player->setX(newX);
                 player->setY(oldY);
+                if (player->getIfColliding(&drawAbleObject))
+                {
+                    player->setX(oldX);
+                    player->setY(oldY);
+                }
             }
-            else if (player->getIfColliding(&drawAbleObject))
-            {
-                player->setX(oldX);
-                player->setY(oldY);
-            }
-            return;
         }
-
     }
-    if (newX > 0 && newX + player->getWidth() < screenWidth)
+    if ((player->getX() < 0 || player->getX() + player->getWidth() >= screenWidth))
     {
-        player->setX(newX);
+        player->setX(oldX);
     }
-    if (newY > 0 && newY + player->getHeight() < screenHeight)
+    if (player->getY() < 0 || player->getY() + player->getHeight() >= screenHeight)
     {
-        player->setY(newY);
+        player->setY(oldY);
     }
 }
 
